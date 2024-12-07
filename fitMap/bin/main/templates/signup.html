@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 나이키 스타일 전체 적용 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #ffffff;
+            color: #111;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+
+        }
+        h1, h2 {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* 헤더 스타일 */
+        .nike-style-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nike-style-header h1 {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 2rem;
+        }
+
+        .nike-style-header .menu {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nike-style-header .menu li {
+            display: inline;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .nike-style-header .menu li a {
+            padding: 5px 10px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nike-style-header .menu li a:hover {
+            color: #ff0000;
+        }
+
+        /* 컨테이너 스타일 */
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: left;
+            display: block;
+            margin: 15px 0 5px;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], select {
+            width: 100%;
+            padding: 12px;
+            margin: 0;
+            font-size: 0.9rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, select:focus {
+            border-color: #111;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #111;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #333;
+            transform: scale(1.02);
+        }
+
+        select {
+            width: 100%;
+        }
+
+        .region-box {
+            display: flex;
+            gap: 10px;
+        }
+
+        .error {
+            color: #d9534f;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="nike-style-header">
+        <h1>FitMap</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="/">HOME</a></li>|
+                <li><a href="/about">About</a></li>|
+                <li><a href="/help">HELP</a></li>|
+                <li><a href="/mypage">Mypage</a></li>|
+                <li><a href="/signin">Login</a></li>|
+                <li><a href="/signup">Signup</a></li>
+            </ul>
+        </nav>
+
+		<div class="icons">
+		    <!-- <a href="/mypage" class="icon">👤</a>
+		    <a href="/cart" class="icon">🛒</a> -->
+		</div>
+    </header>
+
+    <!-- 회원가입 폼 -->
+    <div class="container">
+        <h2>회원가입</h2>
+        <form id="signupForm">
+            <label for="username">사용할 이름 (닉네임)</label>
+            <input type="text" id="username" name="username" placeholder="닉네임을 입력하세요" required>
+
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" placeholder="이메일을 입력하세요" required>
+
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+
+            <label for="confirmPassword">비밀번호 확인</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="비밀번호를 다시 입력하세요" required>
+
+            <label for="region">거주지</label>
+            <div class="region-box">
+                <select name="region" id="region" onchange="updateDistrictOptions()" required>
+                    <option value="">지역 선택</option>
+                    <option value="서울특별시">서울특별시</option>
+                    <option value="경기도">경기도</option>
+                    <option value="부산광역시">부산광역시</option>
+                    <option value="인천광역시">인천광역시</option>
+                    <option value="대구광역시">대구광역시</option>
+                    <option value="광주광역시">광주광역시</option>
+                    <option value="대전광역시">대전광역시</option>
+                    <option value="울산광역시">울산광역시</option>
+                </select>
+                <select name="district" id="district" required>
+                    <option value="">군구 선택</option>
+                </select>
+            </div>
+
+            <button type="submit">회원가입</button>
+        </form>
+        <div class="error" id="error-message"></div>
+    </div>
+
+    <script>
+        // 폼 제출
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // 폼 제출 기본 동작 막음
+		
+			const params = new URLSearchParams(window.location.search);
+			   if (params.get('alert') === 'true') {
+			       alert('회원가입 하십시오!');
+			   }
+			   
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const region = document.getElementById("region").value;
+            const district = document.getElementById("district").value;
+
+            if (password !== confirmPassword) {
+                document.getElementById("error-message").textContent = "비밀번호가 일치하지 않습니다.";
+                return;
+            }
+
+            fetch('/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    email: email,
+                    password: password,
+                    address: `${region} ${district}`
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.text();
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.username) {
+                    alert('회원가입 성공!');
+                    window.location.href = '/signin'; // 로그인 페이지로 리다이렉트
+                } else {
+                    document.getElementById("error-message").textContent = data; // 에러 메시지 표시
+                }
+            })
+            .catch(error => {
+                document.getElementById("error-message").textContent = "서버 오류 발생: " + error;
+            });
+        });
+    </script>
+	<script src="index.js"></script>
+
+</body>
+</html>

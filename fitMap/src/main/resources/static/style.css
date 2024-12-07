@@ -1,0 +1,231 @@
+/* 공통 초기화 */
+body {
+    margin: 0;
+    padding: 0;
+    /* font-family: 'Noto Sans KR', sans-serif; */
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2, h4 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* 헤더 스타일 */
+.nike-style-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nike-style-header h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+}
+
+.nike-style-header .menu {
+    display: flex;
+    gap: 15px;
+}
+
+.nike-style-header .menu li {
+    display: inline;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.nike-style-header .menu li a {
+    padding: 5px 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+.nike-style-header .menu li a:hover {
+    color: #ff0000;
+}
+
+
+
+/* 검색 섹션 */
+.search-section {
+    padding: 20px 500px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.search-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.search-section form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-section input, 
+.search-section select, 
+.search-section button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.search-section button {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-section button:hover {
+    background-color: #cc0000;
+}
+
+/* 필터링 옵션 */
+.filter-section form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.filter-section label {
+    display: block; /* 블록 요소로 변경 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    font-weight: bold; /* 가독성을 위한 굵기 추가 (선택 사항) */
+    margin-bottom: 5px; /* 간격을 위해 하단 여백 추가 */
+}
+
+.filter-section select, .filter-section button, .filter-section input {
+    box-sizing: border-box; /* 패딩과 보더 포함한 너비 계산 */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%; /* 동일한 너비로 설정 */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.filter-section button {
+    grid-column: span 2;
+    width: 100%; 
+	background-color: #333;
+    color: white;
+}
+
+.filter-section button:hover {
+	background-color: #333;
+    transform: scale(1.01);
+}
+
+.filter-section .toggle-filter {
+    padding: 5px 10px;
+    font-size: 12px;
+    background-color: #333;
+    width: 180px;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-section {
+    padding: 10px;
+}
+
+.filter-section .toggle-filter:hover {
+    background-color: #333;
+}
+
+.filter-section .filter-options {
+    /* width: 50%; */
+    display: none;
+    padding: 10px 30px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* 검색 결과 */
+.results-section {
+    padding: 40px 20px;
+    background-color: #fff;
+} 
+
+.results-section ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.results-section li {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+.results-section li:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.results-section h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.results-section p {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+}
+
+.results-section a {
+    font-size: 14px;
+    color: #ff0000;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* 페이징 */
+div {
+    text-align: center;
+    padding: 20px 0;
+}
+
+div a {
+    margin: 0 5px;
+    color: #000;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+div a:hover {
+    color: #ff0000;
+}
+

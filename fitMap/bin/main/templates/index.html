@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스포츠강좌 찾기</title>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!-- 헤더 -->
+    <header class="nike-style-header">
+        <h1>FitMap</h1>
+
+	    <!-- <h2>한눈에 보는 전국 체육시설 스포츠강좌 리스트</h2> -->
+		<nav>
+		    <ul class="menu">
+		        <li><a href="/">HOME</a></li>|
+		        <li><a href="/about">About</a></li>|
+		        <li><a href="/help">HELP</a></li>|
+		        <li><a href="/mypage">Mypage</a></li>|
+		        <li><a href="/signin">Login</a></li>|
+		        <li><a href="/signup">Signup</a></li>
+				
+		    </ul>
+		</nav>
+        <div class="icons">
+            <!-- <a href="/mypage" class="icon">👤</a>
+            <a href="/cart" class="icon">🛒</a> -->
+        </div>
+	</header>
+
+	<!-- 검색창 -->
+	<section class="search-section">
+		<h2>찾으시는 스포츠강좌가 있으신가요?</h2>
+	    <form action="/programs" method="get">
+	        <select name="searchType" id="search-type">
+	            <option value="시설명">시설명</option>
+	            <option value="프로그램명">프로그램명</option>
+	        </select>
+
+	        <input type="text" name="searchKeyword" placeholder="시설명 또는 프로그램명 입력"
+					th:value="${searchKeyword}" />
+	        <button type="submit">검색</button>
+	    </form>
+
+        <div class="filter-section">
+
+            <!-- "조건 검색" 버튼 추가 -->
+            <button class="toggle-filter">나에게 맞는 조건 추가하기</button>
+    
+            <!-- 필터링 옵션은 기본적으로 숨겨짐 -->
+            <div class="filter-options">
+    
+                <form action="/" method="get">
+                    <!-- 지역 - 시 필터링 -->
+                    <div>
+                        <label for="region">지역:</label>
+                        <select name="region" id="region" onchange="updateDistrictOptions()">
+                            <option value="">지역 선택</option>
+                            <option value="서울특별시">서울특별시</option>
+                            <option value="경기도">경기도</option>
+                            <option value="부산광역시">부산광역시</option>
+                            <option value="인천광역시">인천광역시</option>
+                            <option value="대구광역시">대구광역시</option>
+                            <option value="광주광역시">광주광역시</option>
+                            <option value="대전광역시">대전광역시</option>
+                            <option value="울산광역시">울산광역시</option>
+                        </select>
+                    </div>
+    
+    
+                    <!-- 지역 - 군구 필터링 -->
+                    <div>
+                        <label for="district">군구:</label>
+                        <select name="district" id="district">
+                            <option value="">군구 선택</option>
+                        </select>
+                    </div>
+            
+                    
+					<!-- 요일 필터링 (체크박스) -->
+					<div>
+					    <label>요일:</label>
+					    <div>
+					        <label>
+					            <input type="checkbox" name="days[]" value="월"> 월
+					        </label>
+					        <label>
+					            <input type="checkbox" name="days[]" value="화"> 화
+					        </label>
+					        <label>
+					            <input type="checkbox" name="days[]" value="수"> 수
+					        </label>
+					        <label>
+					            <input type="checkbox" name="days[]" value="목"> 목
+					        </label>
+					        <label>
+					            <input type="checkbox" name="days[]" value="금"> 금
+					        </label>
+					        <label>
+					            <input type="checkbox" name="days[]" value="토"> 토
+					        </label>
+					        <label>
+					            <input type="checkbox" name="days[]" value="일"> 일
+					        </label>
+					    </div>
+					</div>
+
+
+    
+                    <!-- 시간대 필터링 -->
+                    <div>
+                        <label for="time">시간대:</label>
+                        <select name="time" id="time">
+                            <option value="오전">오전 (6:00 - 12:00)</option>
+                            <option value="오후">오후 (12:00 - 18:00)</option>
+                            <option value="저녁">저녁 (18:00 - 22:00)</option>
+                        </select>
+                    </div>
+    
+    
+                    <!-- 프로그램 가격 필터링 -->
+                    <div>
+                        <label for="price">프로그램 가격 (₩):</label>
+                        <input type="number" name="price" id="price" min="0" max="300000" placeholder="최대 300,000원" />
+                    </div>
+    
+                    <!-- 프로그램 시작일자 -->
+                    <div>
+                        <label for="startDate">프로그램 시작일자:</label>
+                        <input type="month" name="startDate" id="startDate" />
+                    </div>
+    
+                <!-- 필터링 버튼 -->
+                <button type="submit">확인</button>
+            </form>
+        </div>
+    </section>  
+	
+	
+
+	
+	<!-- 검색 결과 -->
+    <section class="results-section">
+        <!-- <h2>강좌 목록</h2> -->
+        <ul>
+            <li th:each="program : ${programs}">
+                <h4 th:text="'강좌명: ' + ${program.progrmNm}">강좌명</h4>
+                <p th:text="'시설명: ' + ${program.fcltyNm}">시설명</p>
+                <p th:text="'지역: ' + ${program.ctvprvnNm} + ' ' + ${program.signguNm}">지역</p>
+                <p th:text="'연령대: ' + ${program.progrmTrgetNm}">연령대</p>
+                <p th:text="'활동 일정: ' + ${program.progrmBeginDe} + ' ~ ' + ${program.progrmEndDe}">활동 일정</p>
+				<p th:text="'시간대: ' + ${program.progrmEstblTiznValue}">시간대</p>
+                <p th:text="'가격: ' + ${program.progrmPrc}">가격</p>
+				<p>홈페이지 URL: <a th:href="${program.hmpgUrl}" th:text="${program.hmpgUrl}" target="_blank"></a></p>
+            </li>
+        </ul>
+    </section>
+	
+	<!-- 페이징 네비게이션 -->
+	<div>
+	    <span th:if="${currentPage > 0}">
+	        <a th:href="@{/programs(page=${currentPage - 1}, searchType=${searchType}, searchKeyword=${searchKeyword})}">Previous</a>
+	    </span>
+	    <span th:text="${currentPage + 1}"></span> / <span th:text="${totalPages}"></span>
+	    <span th:if="${currentPage < totalPages - 1}">
+	        <a th:href="@{/programs(page=${currentPage + 1}, searchType=${searchType}, searchKeyword=${searchKeyword})}">Next</a>
+	    </span>
+	</div>
+	
+	<script src="index.js"></script>
+
+</body>
+</html>

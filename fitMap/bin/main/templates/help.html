@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>고객센터 - 전국 체육시설 스포츠강좌</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">홈</a></li>
+                <li><a href="/programs">스포츠강좌</a></li>
+                <li><a href="/contact">고객센터</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contact-section">
+        <div class="container">
+            <h1>고객센터</h1>
+            <p>전국 체육시설 스포츠강좌에 관한 궁금한 사항을 문의해주세요. 고객님의 소중한 의견을 기다립니다.</p>
+            
+            <div class="faq">
+                <h2>자주 묻는 질문 (FAQ)</h2>
+                <ul>
+                    <li><a href="#q1">1. 스포츠 강좌를 등록하려면 어떻게 하나요?</a></li>
+                    <li><a href="#q2">2. 강좌에 대한 자세한 정보를 어디서 확인할 수 있나요?</a></li>
+                    <li><a href="#q3">3. 결제 방법에는 어떤 것이 있나요?</a></li>
+                    <li><a href="#q4">4. 강좌 취소나 환불 절차는 어떻게 되나요?</a></li>
+                </ul>
+            </div>
+
+            <div class="faq-answers">
+                <h2>답변</h2>
+                <div id="q1">
+                    <h3>1. 스포츠 강좌를 등록하려면 어떻게 하나요?</h3>
+                    <p>강좌 등록은 홈페이지에서 회원가입 후 원하는 프로그램을 선택하고 등록할 수 있습니다. 각 강좌별 일정과 가격을 확인한 후, 신청서를 작성하여 제출하면 됩니다.</p>
+                </div>
+                <div id="q2">
+                    <h3>2. 강좌에 대한 자세한 정보를 어디서 확인할 수 있나요?</h3>
+                    <p>홈페이지의 각 스포츠강좌 프로그램 페이지에서 상세 정보를 확인하실 수 있습니다. 또한, 각 시설의 연락처를 통해 추가적인 정보도 제공받을 수 있습니다.</p>
+                </div>
+                <div id="q3">
+                    <h3>3. 결제 방법에는 어떤 것이 있나요?</h3>
+                    <p>온라인 결제 시스템을 통해 카드 결제, 계좌이체, 모바일 결제 등 다양한 결제 수단을 제공합니다. 결제 과정에서 발생할 수 있는 문제는 고객센터로 문의해 주세요.</p>
+                </div>
+                <div id="q4">
+                    <h3>4. 강좌 취소나 환불 절차는 어떻게 되나요?</h3>
+                    <p>강좌 취소 및 환불은 강좌 시작일 기준으로 정해진 규정에 따라 처리됩니다. 홈페이지의 환불 정책을 확인하고, 문의가 필요하면 고객센터로 연락 주세요.</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2>문의하기</h2>
+                <form action="/submit-contact" method="post">
+                    <label for="name">이름</label>
+                    <input type="text" id="name" name="name" required placeholder="이름을 입력하세요">
+                    
+                    <label for="email">이메일</label>
+                    <input type="email" id="email" name="email" required placeholder="이메일을 입력하세요">
+                    
+                    <label for="message">메시지</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="문의 내용을 작성하세요"></textarea>
+                    
+                    <button type="submit">보내기</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h2>연락처</h2>
+                <p>전화: 123-456-7890</p>
+                <p>이메일: support@fitnesscenter.com</p>
+                <p>주소: 서울시 강남구 체육시설 123-45</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 전국 체육시설 스포츠강좌. All rights reserved.</p>
+    </footer>
+</body>
+</html>

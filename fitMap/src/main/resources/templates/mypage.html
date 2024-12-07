@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 헤더 -->
+    <header>
+        <div class="header-container">
+            <h1>마이페이지</h1>
+            <nav>
+                <a href="/">홈</a>
+                <a href="/programs">프로그램 목록</a>
+                <a href="/logout">로그아웃</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 사용자 프로필 -->
+<!--    <section class="profile-section">
+        <h2>사용자 정보</h2>
+        <div class="profile-info">
+            <p><strong>사용자 이름:</strong> <span th:text="${user.username}">Username</span></p>
+            <p><strong>이메일:</strong> <span th:text="${user.email}">Email</span></p>
+            <p><strong>가입일:</strong> <span th:text="${user.registrationDate}">2024-01-01</span></p>
+        </div>
+    </section>-->
+
+    <!-- 사용자 활동 내역 -->
+<!--    <section class="activity-section">
+        <h2>활동 내역</h2>
+        <ul>
+            <li th:each="activity : ${user.activities}">
+                <p th:text="'활동명: ' + ${activity.name}">Activity Name</p>
+                <p th:text="'일자: ' + ${activity.date}">Activity Date</p>
+            </li>
+        </ul>
+    </section>-->
+
+</body>
+</html>
